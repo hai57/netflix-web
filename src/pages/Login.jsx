@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import logo from '@/assets/logo.png'
-import { useState } from 'react'
 
 const Login = () => {
+
+  const navigate = useNavigate()
   const [signState, setSignState] = useState("Sign In")
 
+  const handleLogoClick = () => {
+    navigate('/')
+  }
   return (
     <div className='login'>
-      <img src={logo} className='login-logo' alt="logo" />
+      <img src={logo} className='login-logo' onClick={handleLogoClick} alt="logo" />
       <div className="login-form">
         <h1>{signState}</h1>
         <form >
@@ -18,8 +24,8 @@ const Login = () => {
           <button className='btn-signin'>{signState}</button>
           <div className="form-help">
             <div className="remember">
-              <input type="checkbox" />
-              <label htmlFor="">Remember Me</label>
+              <input type="checkbox" id='rememberMe' />
+              <label htmlFor="rememberMe">Remember Me</label>
             </div>
             <p>Need Help?</p>
           </div>
