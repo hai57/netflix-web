@@ -1,4 +1,5 @@
-import React, { useRef, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
 
 import logo from '@/assets/logo.png'
 import search_icon from '@/assets/search_icon.svg'
@@ -10,6 +11,12 @@ const Navbar = () => {
 
   const navRef = useRef();
 
+  const navigate = useNavigate();
+
+  const logout = () => {
+    navigate("/login")
+  };
+
   useEffect(() => {
     window.addEventListener('scroll', () => {
       if (window.scrollY >= 80) {
@@ -19,17 +26,30 @@ const Navbar = () => {
       }
     })
   }, [])
+
   return (
     <div ref={navRef} className='navbar'>
       <div className="navbar-left">
         <img src={logo} alt="logo" />
         <ul>
-          <li>Home</li>
-          <li>TV Shows</li>
-          <li>Movies</li>
-          <li>New & Popular</li>
-          <li>My List</li>
-          <li>Browse By Languages </li>
+          <li>
+            <Link className='link' to='/'>Home</Link>
+          </li>
+          <li>
+            <Link className='link' to='/tv-shows'>TV Shows</Link>
+          </li>
+          <li>
+            <Link className='link' to='/movies'>Movies</Link>
+          </li>
+          <li>
+            <Link className='link' to="/new-popular">New & Popular</Link>
+          </li>
+          <li>
+            <Link className='link' to="#">My List</Link>
+          </li>
+          <li>
+            <Link className='link' to="#">Browse By Languages</Link>
+          </li>
         </ul>
       </div>
       <div className="navbar-right">
@@ -44,7 +64,7 @@ const Navbar = () => {
           <img src={profile_img} alt="profile_img" className='profile' />
           <img src={caret_icon} alt="caret_icon" />
           <div className="dropdown">
-            <p>Sign out of Netflix</p>
+            <p onClick={logout}>Sign out of Netflix</p>
           </div>
         </div>
       </div>

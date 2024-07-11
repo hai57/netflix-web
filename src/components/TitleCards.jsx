@@ -1,4 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react'
+/* eslint-disable react/prop-types */
+import { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const TitleCards = ({ title, category }) => {
@@ -30,6 +31,7 @@ const TitleCards = ({ title, category }) => {
 
     cardsRef.current.addEventListener('wheel', handleWheel);
   }, [])
+
   return (
     <div className='title-cards'>
       <h2>{title ? title : "Popular on Netflix"}</h2>
